@@ -28,5 +28,10 @@
         });
         console.log(rt);
     };
+
+    // handy
+    if(typeof sss === 'undefined'){
+        sss = $.bokw;
+    }
     
 })(jQuery);
