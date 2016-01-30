@@ -1,0 +1,1 @@
+jQuery.inf_load(".page_active", ".center");
