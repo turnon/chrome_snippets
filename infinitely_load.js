@@ -17,22 +17,33 @@
 
     function work_with($){
 
-        function loadp(cur_p, content, limit){
+        function loadp(selector){
 
-            var $tail = $(content).last();
+            var $tail = $(selector.content).last();
 
-            limit = (limit || 99);
+            var limit = (selector.limit || 99);
+
+            var link_selector = (selector.current || selector.next);
+
+            function link_slt_fun($doc){
+                var $link = (typeof link_selector === "function") ?
+                    link_selector($doc, $) : $doc.find(link_selector);
+                return selector.next ? $link : $link.next();
+            };
 
             function next_link(doc){
                 if(--limit == 0) return;
-                var $nex_p = ((typeof cur_p == "function") ? cur_p(doc) : $(doc).find(cur_p)).next();
+                var $nex_p = link_slt_fun($(doc));
                 var link = ($nex_p.is('a') ? $nex_p : $nex_p.find('a')).attr('href');
                 console.log(link);
                 return link;
             }
 
             function process_page(data){
-                var $cnt = $(data).find(content);
+                //console.log(data);
+                var $doc = $(data);
+                selector.after && selector.after($doc);
+                var $cnt = $doc.find(selector.content);
                 console.log($cnt, $cnt.length);
                 $tail.after($cnt);
                 $tail = $cnt.last();
@@ -48,12 +59,12 @@
         }
 
         var slt = selectors();
-        slt && loadp.apply(null, slt);
+        slt && loadp.call(null, slt);
 
     }
 
     function afterJqLoaded(){
-        o_j = window.jQuery.noConflict();
+        o_j = jQuery.noConflict();
         work_with(o_j);
     }
 
@@ -67,9 +78,13 @@
     }
 
     function noJq(){
-        return typeof jQuery === 'undefined' || !jQuery.fn.jquery.match(/1\.8/);
+        return (typeof jQuery === 'undefined' || !jQuery.fn.jquery.match(/1\.8/));
     }
 
-    noJq() ? loadJq() : work_with(jQuery);
+    if(noJq()){
+        loadJq();
+    }else{
+        work_with(jQuery);
+    }
 
 })();
