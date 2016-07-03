@@ -1,15 +1,8 @@
 var supported = {
 
-    gamersky: {
-        current: ".page_css b",
-        content: ".Mid2L_con"
-        },
+    gamersky: {current: ".page_css b", content: ".Mid2L_con"},
 
-    wallpaperscraft: {
-        current: ".page_active",
-        content: ".wallpapers,.pages",
-        limit: 10
-        },
+    wallpaperscraft: {current: ".page_active", content: ".wallpapers,.pages", limit: 10},
 
     yinyuetai: {
         current: function($doc, $) {
@@ -19,16 +12,9 @@ var supported = {
         content: ".mv_list,.page-nav"
         },
 
-    "tieba\.baidu\.com\/p": {
-        current: '.pb_footer .tP',
-        content: '.pb_content,.pb_footer'
-        },
+    "tieba\.baidu\.com\/p": {current: '.pb_footer .tP', content: '.pb_content,.pb_footer'},
 
-    "ituring\.com\.cn\/book": {
-        current: '.PagedList-currentPage',
-        content: '#mainbar',
-        limit: 5
-        },
+    "ituring\.com\.cn\/book": {current: '.PagedList-currentPage', content: '#mainbar', limit: 5},
 
     "ituring\.com\.cn\/users\/giftportal": ['.PagedList-currentPage', 'tr:not(:first)'],
 
@@ -55,5 +41,13 @@ var supported = {
             });
         }
     },
+
+    scanlibs: {next: ".nav-previous a", content: ".pull-left"},
+
+    avxhome: {next: ".next", content: ".col-md-12"},
+
+    //banshujiang: {current: ".active", content: ".row,.pagination"},
+
+    onlineprogrammingbooks: {current: ".current", content: "#content", limit: 10},
 
 }
