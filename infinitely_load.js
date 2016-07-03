@@ -40,6 +40,7 @@
             }
 
             function process_page(data){
+                //console.log(data);
                 var $doc = $(data);
                 selector.after && selector.after($doc);
                 var $cnt = $doc.find(selector.content);
@@ -63,7 +64,7 @@
     }
 
     function afterJqLoaded(){
-        o_j = window.jQuery.noConflict();
+        o_j = jQuery.noConflict();
         work_with(o_j);
     }
 
@@ -80,6 +81,10 @@
         return (typeof jQuery === 'undefined' || !jQuery.fn.jquery.match(/1\.8/));
     }
 
-    noJq() ? loadJq() : work_with(jQuery);
+    if(noJq()){
+        loadJq();
+    }else{
+        work_with(jQuery);
+    }
 
 })();
