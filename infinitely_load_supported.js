@@ -16,7 +16,7 @@ var supported = {
 
     "ituring\.com\.cn\/book": {current: '.PagedList-currentPage', content: '#mainbar', limit: 5},
 
-    "ituring\.com\.cn\/users\/giftportal": ['.PagedList-currentPage', 'tr:not(:first)'],
+    "ituring.*giftportal":  {current: '.PagedList-currentPage', content: 'tr:not(:first)'},
 
     "epubit\.com\.cn\/book": {
         current: '.PagedList-currentPage',
