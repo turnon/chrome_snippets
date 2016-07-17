@@ -50,4 +50,6 @@ var supported = {
 
     onlineprogrammingbooks: {current: ".current", content: "#content", limit: 10},
 
+    douban: {current: ".thispage", content: ".article"},
+
 }
